@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' data: blob:; connect-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Collage Maker — Free Photo Grid Collage Maker | S3eidat Tools</title>
+<meta name="description" content="Combine 2 to 9 photos into a neat grid collage. Many layouts, pan and zoom inside each cell, gap, rounded corners, background colour, Instagram and story sizes. Free, private, nothing uploaded.">
+<meta property="og:title" content="Collage Maker — free, private photo grid maker">
+<meta property="og:description" content="Combine photos into a neat grid collage. Runs 100% in your browser.">
+<meta property="og:image" content="screenshot.png">
+<link rel="icon" href="kit/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="kit/kit.css">
+<link rel="stylesheet" href="app.css">
+<script src="kit/kit.js"></script>
+</head>
+<body data-tool="collage-maker">
+<main class="s3-main">
+  <section class="s3-hero">
+    <h1>Collage Maker</h1>
+    <p>Combine 2 to 9 photos into a neat grid. Drag inside a cell to reposition, scroll or use the slider to zoom. Your photos stay on your device.</p>
+  </section>
+
+  <div class="cm-grid">
+    <section class="card stack cm-left">
+      <div class="row between">
+        <label class="btn primary" id="add"><svg class="i"><use href="#i-plus"/></svg>Add photos<input type="file" accept="image/*" multiple hidden></label>
+        <span class="faint" id="hint">Drop photos anywhere on the collage</span>
+      </div>
+      <div class="cm-stage checker" id="stage">
+        <canvas id="cv" tabindex="0" aria-label="Collage preview. Click a cell to add or select a photo, drag to reposition."></canvas>
+      </div>
+      <div class="row between cm-cellbar" id="cellbar">
+        <span class="chip accent" id="cellName">Cell 1</span>
+        <label class="field grow cm-zoom"><span>Zoom <span class="faint" id="zLbl">100%</span></span><input type="range" id="zoom" min="100" max="400" value="100"></label>
+        <div class="row">
+          <button class="btn small icon" id="prev" title="Swap with previous cell" aria-label="Swap with previous cell">←</button>
+          <button class="btn small icon" id="next" title="Swap with next cell" aria-label="Swap with next cell">→</button>
+          <button class="btn small" id="replace">Replace</button>
+          <button class="btn small ghost danger" id="remove" aria-label="Remove photo"><svg class="i"><use href="#i-trash"/></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card stack cm-right">
+      <div class="field"><span>Photos</span>
+        <div class="seg" id="count" role="group" aria-label="Number of photos"></div>
+      </div>
+      <div class="field"><span>Layout</span>
+        <div class="cm-tpls" id="tpls" role="group" aria-label="Layout"></div>
+      </div>
+      <label class="field">Size
+        <select class="select" id="size"></select>
+      </label>
+      <label class="field"><span>Gap <span class="faint" id="gLbl"></span></span><input type="range" id="gap" min="0" max="60" value="12"></label>
+      <label class="field"><span>Corner radius <span class="faint" id="rLbl"></span></span><input type="range" id="radius" min="0" max="80" value="10"></label>
+      <label class="field">Background
+        <span class="row cm-color"><input type="color" id="bg" value="#ffffff" aria-label="Background colour picker"><input class="input mono" id="bgHex" value="#ffffff" spellcheck="false" aria-label="Background colour hex"></span>
+      </label>
+      <div class="row">
+        <div class="seg" id="fmt" role="group" aria-label="Format">
+          <button aria-pressed="true" data-v="jpeg">JPG</button>
+          <button aria-pressed="false" data-v="png">PNG</button>
+        </div>
+        <button class="btn primary grow" id="dl"><svg class="i"><use href="#i-download"/></svg>Download</button>
+      </div>
+      <p class="faint" id="outInfo"></p>
+    </section>
+  </div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

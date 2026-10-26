@@ -1,0 +1,22 @@
+.cm-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 320px); gap: 14px; align-items: start; }
+@media (max-width: 880px) { .cm-grid { grid-template-columns: minmax(0, 1fr); } }
+.cm-left, .cm-right { min-width: 0; grid-template-columns: minmax(0, 1fr); }
+.cm-stage { display: grid; grid-template-columns: minmax(0, 1fr); justify-items: center; align-items: center; padding: 16px; border-radius: 14px; border: 1px solid var(--line); min-height: 300px; transition: box-shadow var(--dur), border-color var(--dur); }
+.cm-stage.is-over { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.cm-stage canvas { display: block; max-width: 100%; max-height: 64vh; width: auto; height: auto; border-radius: 6px; box-shadow: 0 14px 40px -18px rgba(0,0,0,.6); cursor: grab; touch-action: none; }
+.cm-stage canvas:active { cursor: grabbing; }
+.cm-cellbar { gap: 10px 14px; }
+.cm-zoom { min-width: 140px; }
+div.field { display: grid; gap: 6px; font-size: 12.5px; font-weight: 600; color: var(--text-2); }
+.field > .seg { justify-self: start; }
+.field .faint { font-weight: 500; }
+.cm-color { flex-wrap: nowrap; gap: 6px; }
+.cm-color .input { min-width: 0; }
+#count { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); justify-self: stretch; }
+#count button { min-width: 0; padding: 6px 0; }
+.cm-tpls { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.cm-tpl { position: relative; aspect-ratio: 1; border-radius: 9px; background: var(--surface-2); border: 1px solid var(--line); overflow: hidden; transition: border-color var(--dur), box-shadow var(--dur); }
+.cm-tpl span { position: absolute; box-sizing: border-box; border: 2px solid var(--surface-2); border-radius: 4px; background: var(--surface-3); transition: background var(--dur); }
+.cm-tpl:hover span { background: var(--line-strong); }
+.cm-tpl[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+.cm-tpl[aria-pressed="true"] span { background: var(--accent-soft); border-color: var(--surface-2); }
